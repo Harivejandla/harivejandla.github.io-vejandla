@@ -6,6 +6,13 @@
   <title>Vejandla – UX Design & Accessibility</title>
   <meta name="description" content="I'm Vejandla Hari Sankar, a UX Designer focused on accessibility and inclusive design." />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome for social icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
   <header class="navbar">
@@ -15,40 +22,62 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#work">Work</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
-      <a href="resume.pdf" download class="btn resume-btn" aria-label="Download Resume">📄 Resume</a>
-      <button id="dark-toggle" aria-label="Toggle Dark Mode" class="btn dark-toggle">🌙</button>
+      <a href="resume.pdf" download class="btn resume-btn" aria-label="Download Resume">
+        <i class="fa-solid fa-file-arrow-down"></i> Resume
+      </a>
+      <button id="dark-toggle" aria-label="Toggle Dark Mode" class="btn dark-toggle" title="Toggle Dark Mode">🌙</button>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero section">
       <h1>Hello, I’m Vejandla</h1>
       <p>I’m a UX designer focused on accessibility and neuroinclusive design.</p>
     </section>
 
-    <section id="about">
+    <section id="about" class="section about-section">
       <h2>About Me</h2>
       <p>I’m passionate about building inclusive digital experiences that work for everyone. I specialize in accessible design and human-centered UX strategy.</p>
     </section>
 
-    <section id="work">
+    <section id="work" class="section work-section">
       <h2>My Work</h2>
       <ul>
         <li><a href="#" target="_blank" rel="noopener noreferrer">Accessibility Cards Project</a></li>
         <li><a href="#" target="_blank" rel="noopener noreferrer">Inclusive Podcast Appearance</a></li>
       </ul>
       <div class="social-links" aria-label="Social media links">
-        <a href="https://linkedin.com/in/harivejandla" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/harivejandla" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/harivejandla" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/harivejandla" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/harivejandla" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="gallery" class="section gallery-section">
+      <h2>My Images</h2>
+      <div class="gallery-grid" aria-label="Image gallery">
+        <button class="gallery-item" data-index="0" aria-label="Open Photo 1" tabindex="0">
+          <img src="images/photo1.jpg" alt="Photo 1 description" />
+        </button>
+        <button class="gallery-item" data-index="1" aria-label="Open Photo 2" tabindex="0">
+          <img src="images/photo2.jpg" alt="Photo 2 description" />
+        </button>
+        <button class="gallery-item" data-index="2" aria-label="Open Photo 3" tabindex="0">
+          <img src="images/photo3.jpg" alt="Photo 3 description" />
+        </button>
+        <button class="gallery-item" data-index="3" aria-label="Open Photo 4" tabindex="0">
+          <img src="images/photo4.jpg" alt="Photo 4 description" />
+        </button>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
       <h2>Contact</h2>
       <form action="https://formsubmit.co/harivejandla@outlook.com" method="POST" class="contact-form" novalidate>
         <label for="name">Name</label>
@@ -63,14 +92,23 @@
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value="https://harivejandla.github.io/thank-you.html" />
 
-        <button type="submit" class="btn">Send Message</button>
+        <button type="submit" class="btn send-btn">Send Message</button>
       </form>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Hari Vejandla – Designed with ❤️</p>
+    <p>© 2025 Vejandla – Designed with ❤️</p>
   </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" tabindex="-1" hidden>
+    <button id="close-lightbox" aria-label="Close Image">&times;</button>
+    <button id="prev-lightbox" aria-label="Previous Image">&#10094;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <button id="next-lightbox" aria-label="Next Image">&#10095;</button>
+    <p id="lightbox-caption"></p>
+  </div>
 
   <script src="script.js"></script>
 </body>
