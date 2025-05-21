@@ -2,77 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vejandla Hari Sankar Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vejandla – UX Design & Accessibility</title>
+  <meta name="description" content="I'm Vejandla Hari Sankar, a UX Designer focused on accessibility and inclusive design." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <button id="dark-toggle" class="dark-toggle">🌙</button>
+  <header class="navbar">
+    <div class="logo"><a href="#">Vejandla</a></div>
 
-  <header>
-    <h1>Vejandla Hari Sankar</h1>
-    <p>Technical Support Executive | UX Enthusiast</p>
-    <nav class="social-links">
-      <a href="https://linkedin.com/in/harivejandla" target="_blank">LinkedIn</a>
-      <a href="https://github.com/harivejandla" target="_blank">GitHub</a>
-      <a href="mailto:harivejandla@outlook.com">Email</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
+
+    <div class="header-actions">
+      <a href="resume.pdf" download class="btn resume-btn" aria-label="Download Resume">📄 Resume</a>
+      <button id="dark-toggle" aria-label="Toggle Dark Mode" class="btn dark-toggle">🌙</button>
+    </div>
   </header>
 
   <main>
-    <section class="card-3d">
-      <img src="images/profile.jpg" alt="Profile" />
-      <h2>Hello, I’m Hari</h2>
-      <p>I work at Teleperformance. I design for inclusion & accessibility.</p>
-      <a class="resume" href="resume.pdf" download>📄 Download Resume</a>
+    <section class="hero">
+      <h1>Hello, I’m Vejandla</h1>
+      <p>I’m a UX designer focused on accessibility and neuroinclusive design.</p>
     </section>
 
-    <section class="gallery-section">
-      <h2>Gallery</h2>
-      <div class="gallery">
-        <img src="images/photo1.jpg" alt="Photo 1" tabindex="0" data-caption="Photo 1 Description" />
-        <img src="images/photo2.jpg" alt="Photo 2" tabindex="0" data-caption="Photo 2 Description" />
-        <img src="images/photo3.jpg" alt="Photo 3" tabindex="0" data-caption="Photo 3 Description" />
-        <img src="images/photo4.jpg" alt="Photo 4" tabindex="0" data-caption="Photo 4 Description" />
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m passionate about building inclusive digital experiences that work for everyone. I specialize in accessible design and human-centered UX strategy.</p>
+    </section>
+
+    <section id="work">
+      <h2>My Work</h2>
+      <ul>
+        <li><a href="#" target="_blank" rel="noopener noreferrer">Accessibility Cards Project</a></li>
+        <li><a href="#" target="_blank" rel="noopener noreferrer">Inclusive Podcast Appearance</a></li>
+      </ul>
+      <div class="social-links" aria-label="Social media links">
+        <a href="https://linkedin.com/in/harivejandla" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/harivejandla" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </section>
 
-    <section>
-      <h2>My Calendar</h2>
-      <iframe src="https://calendar.google.com/calendar/u/0/r?pli=1" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
-    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <form action="https://formsubmit.co/harivejandla@outlook.com" method="POST" class="contact-form" novalidate>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
 
-    <section class="game-section">
-      <h2>Simple Game</h2>
-      <div class="game-area">
-        <div id="player" tabindex="0"></div>
-      </div>
-    </section>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
 
-    <section class="contact">
-      <h2>Contact Me</h2>
-      <form action="https://formsubmit.co/harivejandla@outlook.com" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value="https://harivejandla.github.io/thank-you.html" />
-        <button type="submit">Send</button>
+
+        <button type="submit" class="btn">Send Message</button>
       </form>
     </section>
   </main>
 
-  <!-- Lightbox -->
-  <div id="lightbox">
-    <button id="closeBtn">×</button>
-    <button id="prevBtn">❮</button>
-    <img id="lightboxImage" src="" alt="" />
-    <button id="nextBtn">❯</button>
-    <div id="caption"></div>
-  </div>
-
   <footer>
-    <p>© 2025 Vejandla Hari Sankar</p>
+    <p>© 2025 Hari Vejandla – Designed with ❤️</p>
   </footer>
 
   <script src="script.js"></script>
