@@ -2,84 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vejandla Hari Sankar – UX & Cyber Enthusiast</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vejandla Hari Sankar</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <button id="dark-toggle" aria-label="Toggle Dark Mode">🌙</button>
-
   <header class="navbar">
     <div class="logo">Vejandla Hari Sankar</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Images</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <img src="images/profile.jpg" alt="Hari Vejandla Profile" class="profile" />
-    <h1>Hello, I’m Hari Vejandla</h1>
-    <p>UX Designer & Cybersecurity Enthusiast focused on accessibility and inclusive design.</p>
-    <a href="resume.pdf" class="resume-btn" download>📄 Download Resume</a>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Hello, I’m Hari Vejandla</h1>
+      <p>Technical Support Executive & UX Designer focused on accessibility and inclusion.</p>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a cyber enthusiast and UX designer passionate about creating inclusive digital experiences. I blend security awareness with human-centered design to ensure safety, accessibility, and usability for all.
-    </p>
-  </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m a cyber enthusiast who is passionate about building inclusive, secure, and user-friendly digital experiences. My focus is on accessibility, design systems, and human-centered UX strategies.</p>
+    </section>
 
-  <section id="gallery">
-    <h2>My Images</h2>
-    <div class="gallery">
-      <img src="images/photo1.jpg" alt="Work 1" />
-      <img src="images/photo2.jpg" alt="Work 2" />
-      <img src="images/photo3.jpg" alt="Work 3" />
-      <img src="images/photo4.jpg" alt="Work 4" />
-    </div>
-  </section>
+    <section id="work">
+      <h2>Image Gallery</h2>
+      <div class="gallery">
+        <img src="images/photo1.jpg" alt="Photo 1">
+        <img src="images/photo2.jpg" alt="Photo 2">
+        <img src="images/photo3.jpg" alt="Photo 3">
+        <img src="images/photo4.jpg" alt="Photo 4">
+      </div>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="#">Accessibility Cards</a></li>
-      <li><a href="#">Podcast on Inclusive Design</a></li>
-      <li><a href="#">Cyber Safety Tips for Designers</a></li>
-    </ul>
-  </section>
+    <section class="game-section">
+      <h2>Fun Game</h2>
+      <canvas id="gameCanvas" width="500" height="300"></canvas>
+    </section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formsubmit.co/harivejandla@outlook.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://harivejandla.github.io/thank-you.html" />
-      <button type="submit">Send</button>
-    </form>
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form action="https://formsubmit.co/harivejandla@outlook.com" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://harivejandla.github.io/thank-you.html" />
+        <button type="submit">Send</button>
+      </form>
+      <button id="dark-toggle" title="Toggle Dark Mode">🌙</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Vejandla Hari Sankar — Designed with ❤️</p>
     <div class="social">
       <a href="https://linkedin.com/in/harivejandla" target="_blank">LinkedIn</a>
       <a href="https://github.com/harivejandla" target="_blank">GitHub</a>
       <a href="mailto:harivejandla@outlook.com">Email</a>
     </div>
-  </section>
-
-  <section class="game-section">
-    <h2>Catch the Square</h2>
-    <div class="game-area">
-      <div id="player"></div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Vejandla Hari Sankar – Designed with ❤️</p>
   </footer>
 
   <script src="script.js"></script>
