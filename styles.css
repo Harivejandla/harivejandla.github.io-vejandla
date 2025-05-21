@@ -1,50 +1,245 @@
+/* Reset & basics */
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
   margin: 0;
-  padding: 0;
-  background-color: #f8f8f8;
-  color: #333;
+  background: #111;
+  color: #fff;
+  line-height: 1.6;
+}
+a {
+  color: #4fc3f7;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+h1, h2 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
 }
 
+/* Navbar */
 .navbar {
+  background-color: #222;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  padding: 1rem;
 }
-
-.navbar .logo a {
-  color: #fff;
+.logo a {
   font-size: 1.5rem;
-  text-decoration: none;
+  font-weight: 700;
+  color: #4fc3f7;
 }
-
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a {
+  font-size: 1rem;
+  color: #eee;
+  transition: color 0.3s ease;
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: #4fc3f7;
 }
 
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
+/* Main content padding */
+main {
+  max-width: 900px;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
 }
 
+/* Hero Section */
 .hero {
-  padding: 2rem;
   text-align: center;
-  background: #eef2f3;
+  margin-bottom: 3rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0.5rem auto 0;
+  color: #bbb;
 }
 
+/* Sections */
 section {
-  padding: 2rem;
+  margin-bottom: 3rem;
+}
+section#gallery h2 {
+  margin-bottom: 1rem;
 }
 
+/* Gallery grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+.gallery img:hover,
+.gallery img:focus {
+  transform: scale(1.05);
+  outline: 2px solid #4fc3f7;
+}
+
+/* Contact links */
+#contact a {
+  color: #4fc3f7;
+}
+
+/* Footer */
 footer {
   text-align: center;
-  padding: 1rem;
-  background-color: #333;
+  padding: 1rem 0;
+  border-top: 1px solid #222;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Lightbox overlay */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom: 0;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  flex-direction: column;
+}
+.lightbox.active {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Lightbox image container */
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 80vh;
+}
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Caption text */
+.caption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* Navigation arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   color: #fff;
+  font-size: 3rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+  z-index: 10;
+  border: none;
+}
+.nav-arrow:hover,
+.nav-arrow:focus {
+  background: rgba(255,255,255,0.3);
+  outline: none;
+}
+.nav-arrow.prev {
+  left: -80px;
+}
+.nav-arrow.next {
+  right: -80px;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+}
+.close-btn:hover,
+.close-btn:focus {
+  color: #f00;
+  outline: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .nav-arrow.prev {
+    left: 10px;
+    top: calc(100% + 10px);
+    transform: none;
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+  }
+  .nav-arrow.next {
+    right: 10px;
+    top: calc(100% + 10px);
+    transform: none;
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+  }
+  .lightbox-content {
+    max-width: 100vw;
+    max-height: 60vh;
+  }
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
