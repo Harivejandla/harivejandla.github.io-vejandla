@@ -1,5 +1,5 @@
 // Placeholder for any JavaScript functionality
-console.log("Welcome to Vejandla's Portfolio!");
+console.log("Welcome to Hari Vejandla's Portfolio!");
 
 (() => {
   const gallery = document.querySelector('#gallery .gallery');
