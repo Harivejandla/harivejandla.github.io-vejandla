@@ -1,9 +1,9 @@
-// Placeholder for any JavaScript functionality
+// JavaScript for Lightbox functionality
 console.log("Welcome to Hari Vejandla's Portfolio!");
 
 (() => {
   const gallery = document.querySelector('#gallery .gallery');
-  if (!gallery) return; // safety check if gallery is missing
+  if (!gallery) return;
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightboxImage');
@@ -19,14 +19,14 @@ console.log("Welcome to Hari Vejandla's Portfolio!");
     currentIndex = index;
     updateLightbox();
     lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden'; // prevent background scroll
-    closeBtn.focus(); // accessibility focus
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
   }
 
   function closeLightbox() {
     lightbox.classList.remove('active');
-    document.body.style.overflow = ''; // restore scroll
-    images[currentIndex].focus(); // return focus to thumbnail
+    document.body.style.overflow = '';
+    images[currentIndex].focus();
   }
 
   function updateLightbox() {
@@ -49,7 +49,7 @@ console.log("Welcome to Hari Vejandla's Portfolio!");
   images.forEach((img, index) => {
     img.addEventListener('click', () => openLightbox(index));
     img.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space') {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
         e.preventDefault();
         openLightbox(index);
       }
@@ -81,7 +81,7 @@ console.log("Welcome to Hari Vejandla's Portfolio!");
     else if (e.key === 'ArrowLeft') showPrev();
   });
 
-  // Touch swipe support
+  // Swipe support
   let startX = 0;
   lightbox.addEventListener('touchstart', (e) => {
     startX = e.changedTouches[0].screenX;
