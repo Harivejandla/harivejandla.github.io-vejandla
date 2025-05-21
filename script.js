@@ -1,98 +1,108 @@
-// Dark mode toggle
-const darkToggleBtn = document.getElementById('dark-toggle');
+// Dark mode toggle with persistence
+const darkToggle = document.getElementById('dark-toggle');
+const body = document.body;
 
-darkToggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-
-  if (document.body.classList.contains('dark-mode')) {
-    darkToggleBtn.textContent = '☀️';
+function setDarkMode(enabled) {
+  if (enabled) {
+    body.classList.add('dark');
+    darkToggle.textContent = '☀️';
   } else {
-    darkToggleBtn.textContent = '🌙';
+    body.classList.remove('dark');
+    darkToggle.textContent = '🌙';
+  }
+  localStorage.setItem('darkMode', enabled ? 'true' : 'false');
+}
+
+darkToggle.addEventListener('click', () => {
+  const isDark = body.classList.contains('dark');
+  setDarkMode(!isDark);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('darkMode');
+  if (saved === 'true') {
+    setDarkMode(true);
+  } else if (saved === 'false') {
+    setDarkMode(false);
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDarkMode(prefersDark);
   }
 });
 
-// Gallery Lightbox
-const galleryItems = document.querySelectorAll('.gallery-item');
+
+// LIGHTBOX FUNCTIONALITY
 const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
+const lightboxImage = document.getElementById('lightbox-image');
 const lightboxCaption = document.getElementById('lightbox-caption');
-const closeLightboxBtn = document.getElementById('close-lightbox');
-const prevBtn = document.getElementById('prev-lightbox');
-const nextBtn = document.getElementById('next-lightbox');
+const closeBtn = document.getElementById('lightbox-close');
+const prevBtn = document.getElementById('lightbox-prev');
+const nextBtn = document.getElementById('lightbox-next');
+const galleryItems = document.querySelectorAll('.gallery-item');
 
-const images = [
-  {
-    src: 'images/photo1.jpg',
-    alt: 'Photo 1 description',
-    caption: 'Photo 1 Description',
-  },
-  {
-    src: 'images/photo2.jpg',
-    alt: 'Photo 2 description',
-    caption: 'Photo 2 Description',
-  },
-  {
-    src: 'images/photo3.jpg',
-    alt: 'Photo 3 description',
-    caption: 'Photo 3 Description',
-  },
-  {
-    src: 'images/photo4.jpg',
-    alt: 'Photo 4 description',
-    caption: 'Photo 4 Description',
-  },
-];
-
-let currentIndex = 0;
+let currentIndex = -1;
 
 function openLightbox(index) {
+  const item = galleryItems[index];
+  if (!item) return;
   currentIndex = index;
-  updateLightbox();
+  lightboxImage.src = item.dataset.full;
+  lightboxImage.alt = item.querySelector('img').alt || '';
+  lightboxCaption.textContent = item.dataset.caption || '';
   lightbox.hidden = false;
   lightbox.focus();
+  document.body.style.overflow = 'hidden'; // prevent background scroll
 }
 
 function closeLightbox() {
   lightbox.hidden = true;
-}
-
-function updateLightbox() {
-  const imgData = images[currentIndex];
-  lightboxImg.src = imgData.src;
-  lightboxImg.alt = imgData.alt;
-  lightboxCaption.textContent = imgData.caption;
+  document.body.style.overflow = '';
+  currentIndex = -1;
 }
 
 function showPrev() {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  updateLightbox();
+  if (currentIndex === -1) return;
+  currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+  openLightbox(currentIndex);
 }
 
 function showNext() {
-  currentIndex = (currentIndex + 1) % images.length;
-  updateLightbox();
+  if (currentIndex === -1) return;
+  currentIndex = (currentIndex + 1) % galleryItems.length;
+  openLightbox(currentIndex);
 }
 
-galleryItems.forEach((item) => {
-  item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
-  item.addEventListener('keydown', (e) => {
+// Open lightbox on click or keyboard (Enter/Space)
+galleryItems.forEach((item, i) => {
+  item.addEventListener('click', () => openLightbox(i));
+  item.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      openLightbox(parseInt(item.dataset.index));
+      openLightbox(i);
     }
   });
 });
 
-closeLightboxBtn.addEventListener('click', closeLightbox);
+closeBtn.addEventListener('click', closeLightbox);
 prevBtn.addEventListener('click', showPrev);
 nextBtn.addEventListener('click', showNext);
 
-lightbox.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
+// Close on Escape key or lightbox background click
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !lightbox.hidden) {
     closeLightbox();
-  } else if (e.key === 'ArrowLeft') {
-    showPrev();
-  } else if (e.key === 'ArrowRight') {
-    showNext();
+  }
+  if (!lightbox.hidden) {
+    if (e.key === 'ArrowLeft') {
+      showPrev();
+    } else if (e.key === 'ArrowRight') {
+      showNext();
+    }
+  }
+});
+
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) {
+    closeLightbox();
   }
 });
