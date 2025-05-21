@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vejandla – UX Design & Accessibility</title>
-  <meta name="description" content="I'm Vejandla Hari Sankar, a UX Designer focused on accessibility and inclusive design."/>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta name="description" content="I'm Vejandla Hari Sankar, a UX Designer focused on accessibility and inclusive design." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <header class="navbar">
     <div class="logo"><a href="#">Vejandla</a></div>
     <nav>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#work">Work</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -34,28 +32,26 @@
 
     <section id="work">
       <h2>My Work</h2>
+      
+      <!-- Gallery Section -->
+      <div id="gallery">
+        <div class="gallery">
+          <img src="photo1.jpg" alt="Photo 1" tabindex="0" data-caption="Description of Photo 1" />
+          <img src="photo2.jpg" alt="Photo 2" tabindex="0" data-caption="Description of Photo 2" />
+          <img src="photo3.jpg" alt="Photo 3" tabindex="0" data-caption="Description of Photo 3" />
+          <img src="photo4.jpg" alt="Photo 4" tabindex="0" data-caption="Description of Photo 4" />
+        </div>
+      </div>
+
       <ul>
         <li><a href="#">Accessibility Cards Project</a></li>
         <li><a href="#">Inclusive Podcast Appearance</a></li>
       </ul>
     </section>
 
-    <!-- Gallery Section Added -->
-    <section id="gallery">
-      <h2>Image Gallery</h2>
-      <div class="gallery" aria-label="Image gallery of my work or inspirations">
-        <img src="https://picsum.photos/id/1015/600/400" alt="Mountain Landscape" data-caption="Mountain Landscape" />
-        <img src="https://picsum.photos/id/1016/600/400" alt="Forest Road" data-caption="Forest Road" />
-        <img src="https://picsum.photos/id/1018/600/400" alt="City Skyline" data-caption="City Skyline" />
-        <img src="https://picsum.photos/id/1020/600/400" alt="Ocean View" data-caption="Ocean View" />
-        <img src="https://picsum.photos/id/1024/600/400" alt="Desert Dunes" data-caption="Desert Dunes" />
-        <img src="https://picsum.photos/id/1035/600/400" alt="Snowy Mountains" data-caption="Snowy Mountains" />
-      </div>
-    </section>
-
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:harivejandla@outlook.com">harivejandla@outlook.com</a></p>
+      <p>Email: harivejandla@outlook.com</p>
     </section>
   </main>
 
@@ -63,15 +59,13 @@
     <p>© 2025 Vejandla – Designed with ❤️</p>
   </footer>
 
-  <!-- Lightbox Overlay -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <button class="close-btn" id="closeBtn" aria-label="Close lightbox">&times;</button>
-    <div class="lightbox-content">
-      <button class="nav-arrow prev" id="prevBtn" aria-label="Previous image">&#10094;</button>
-      <img src="" alt="" id="lightboxImage" />
-      <button class="nav-arrow next" id="nextBtn" aria-label="Next image">&#10095;</button>
-    </div>
-    <div class="caption" id="caption" aria-live="polite"></div>
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-labelledby="caption" tabindex="-1">
+    <button id="closeBtn" aria-label="Close">&times;</button>
+    <button id="prevBtn" aria-label="Previous image">&#10094;</button>
+    <img id="lightboxImage" src="" alt="" />
+    <button id="nextBtn" aria-label="Next image">&#10095;</button>
+    <div id="caption"></div>
   </div>
 
   <script src="script.js"></script>
