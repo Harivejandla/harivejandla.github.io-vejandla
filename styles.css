@@ -1,79 +1,150 @@
-/* Lightbox styles */
-#lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #121212;
+  --text-light: #000;
+  --text-dark: #f0f0f0;
+  --primary: #4caf50;
+  --accent: #00bcd4;
+  --transition: 0.4s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background var(--transition), color var(--transition);
+}
+
+.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.navbar {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 1rem;
-  z-index: 1500;
-  transition: opacity 0.3s ease;
+  justify-content: space-between;
+  background: var(--accent);
+  padding: 1em;
 }
 
-#lightbox[hidden] {
-  display: none;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1em;
 }
 
-#lightbox img {
-  max-width: 90vw;
-  max-height: 70vh;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.8);
-  user-select: none;
-}
-
-#lightbox-caption {
-  margin-top: 0.8rem;
-  color: #ddd;
-  font-size: 1.1rem;
+.hero {
   text-align: center;
-  max-width: 90vw;
+  padding: 2em;
 }
 
-#lightbox-close,
-#lightbox-prev,
-#lightbox-next {
-  position: absolute;
-  background: transparent;
+.profile {
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.resume-btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.6em 1.2em;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+#dark-toggle {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  background: var(--accent);
   border: none;
   color: white;
-  font-size: 2.5rem;
+  padding: 0.5em;
+  font-size: 1.2em;
   cursor: pointer;
-  padding: 0.2rem 0.6rem;
-  transition: color 0.2s ease;
-  user-select: none;
+  border-radius: 50%;
 }
 
-#lightbox-close:hover,
-#lightbox-prev:hover,
-#lightbox-next:hover,
-#lightbox-close:focus,
-#lightbox-prev:focus,
-#lightbox-next:focus {
-  color: #1e90ff;
-  outline: none;
+section {
+  padding: 2em;
 }
 
-#lightbox-close {
-  top: 1rem;
-  right: 1rem;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1em;
 }
 
-#lightbox-prev {
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
 }
 
-#lightbox-next {
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
-/* Dark mode adjustments for lightbox */
-body.dark #lightbox-caption {
-  color: #99ccff;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 500px;
+  margin: auto;
+}
+
+input, textarea, button {
+  padding: 0.8em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.social {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.social a {
+  margin: 0 0.5em;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+footer {
+  text-align: center;
+  padding: 2em;
+  background: var(--accent);
+  color: white;
+}
+
+.game-area {
+  width: 100%;
+  height: 200px;
+  background: #eee;
+  position: relative;
+}
+
+#player {
+  width: 30px;
+  height: 30px;
+  background: red;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  animation: move 5s infinite linear;
+}
+
+@keyframes move {
+  0% { left: 0; }
+  100% { left: calc(100% - 30px); }
 }
